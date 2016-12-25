@@ -1,0 +1,21 @@
+{% extends 'disease/base.html' %}
+
+{% block content %}
+    <div class="post">
+        {% if disease.published_date %}
+            <div class="date">
+                {{ disease.published_date }}
+            </div>
+        {% endif %}
+        <a class="btn btn-default" href="{% url 'post_edit' pk=disease.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        <h1>{{ disease.name }}</h1>
+        <p>질병 : {{ disease.definition }}</p>
+        <p>증상 : {{ disease.symptom }}</p>
+        <p>진단 : {{ disease.diagnosis }}</p>
+        <p>치료 : {{ disease.treatment }}</p>
+        <p>경과 : {{ disease.prognosis }}</p>
+        <p>상식 : {{ disease.common }}</p>
+        <p>약 : {{ disease.drug }}</p>
+        <p>기사 : {{ disease.article }}</p>
+    </div>
+{% endblock %}

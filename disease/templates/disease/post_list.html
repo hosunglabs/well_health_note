@@ -1,0 +1,20 @@
+{% extends 'disease/base.html' %}
+
+{% block content %}
+	<form id="searchform" action="{% url 'search' %}" method="get" accept-charset="utf-8">
+		<input class="searchfield" id="searchbox" name="q" type="text" placeholder="Search">
+		<button class="searchbutton" type="submit">찾기</button>
+	</form>
+
+{% for disease in disease_list %}
+    <div class="post">
+        <div class="date">
+            {{ disease.published_date }}
+        </div>
+		<h1><a href="{% url 'post_detail' pk=disease.pk %}">{{ disease.name }}</a></h1>
+				<p>증상 : {{ disease.symptom|linebreaks }}</p>
+				<p>치료 : {{ disease.treatment|linebreaks }}</p>
+				<p>약 : {{ disease.drug|linebreaks }}</p>
+    </div>
+{% endfor %}
+{% endblock content %}
